@@ -8,6 +8,7 @@ import Blog from "../pages/Blog";
 import AboutUs from "../pages/AboutUs";
 import AllToys from "../pages/AllToys";
 import MyToys from "../pages/MyToys";
+import TermsConditions from "../pages/TermsConditions";
 
 const router = createBrowserRouter([
     {
@@ -15,37 +16,18 @@ const router = createBrowserRouter([
         element: <HomeLayout />,
         errorElement: <ErrorPage></ErrorPage>,
         children: [
-            {
-                path: "/",
-                element: <Home></Home>,
-            },
-            {
-                path: "/login",
-                element: <Login />
-            },
-            {
-                path: "/register",
-                element: <Register />
-            },
-            {
-                path: "/blog",
-                element: <Blog />
-            },
-            {
-                path: "/about",
-                element: <AboutUs />
-            },
-            {
-                path: "/all_toys",
-                element: <AllToys />
-            },
-            {
-                path: "my_toys",
-                element: <MyToys/>
-            }
-        ],
+            { path: "/", element: <Home />, },
+            { path: "/login", element: <Login /> },
+            { path: "/register", element: <Register /> },
+            { path: "/blog", element: <Blog /> },
+            { path: "/about", element: <AboutUs /> },
+            { path: "/all_toys", element: <AllToys /> },
+            { path: "my_toys", element: <MyToys /> },
+            { path: "terms_conditions", element: <TermsConditions /> },
+            
+        ]
 
-    },
+    }
 ]);
 
 export default router;

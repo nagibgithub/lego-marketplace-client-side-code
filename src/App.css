@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
 
-* {
+.font-n {
   font-family: 'Patrick Hand', cursive;
 }
 
@@ -21,5 +21,22 @@
 }
 
 .btn-design-n {
-  @apply px-4 py-2 border hover:border-sky-500 border-white hover:bg-white active:bg-blue-800 active:text-white
+  @apply px-4 py-2 border hover:border-sky-500 border-white hover:bg-white active:bg-blue-800 active:text-white font-n uppercase
+}
+
+.login-container{
+  @apply bg-sky-500
+}
+
+.login-form-container{
+  @apply lg:w-1/2 xl:w-1/3 mx-auto py-5 backdrop-blur-lg rounded-2xl border-2 border-white lg:shadow-lg lg:shadow-white lg:px-8 px-4
+}
+
+.input-field {
+  @apply bg-white bg-opacity-20 focus:text-blue-700 text-white px-4 py-2 focus:bg-white focus:placeholder:text-black font-semibold focus:text-blue-700 text-white px-4 py-2 text-lg rounded-md border-2 border-white placeholder:text-white active:bg-white
+}
+
+
+.google-signin-button {
+  @apply mt-2 border-2 rounded-lg w-full text-center py-2 px-4 flex justify-center items-center hover:bg-sky-300 hover:bg-white active:bg-opacity-50 btn-n
 }

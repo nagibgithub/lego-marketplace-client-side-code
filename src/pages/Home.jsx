@@ -1,8 +1,13 @@
+import Banner from "../components/homeComponents/Banner";
+import ImageSec from "../components/homeComponents/ImageSec";
+import MarqueeSec from "../components/homeComponents/MarqueeSec";
 
 const Home = () => {
     return (
         <div>
-            this is home
+            <Banner></Banner>
+            <MarqueeSec></MarqueeSec>
+            <ImageSec></ImageSec>
         </div>
     );
 };

@@ -5,8 +5,10 @@ import Footer from "../shared/Footer";
 const HomeLayout = () => {
     return (
         <div className="container mx-auto min-h-screen flex flex-col justify-between">
-            <Header></Header>
-            <Outlet></Outlet>
+            <div>
+                <Header></Header>
+                <Outlet></Outlet>
+            </div>
             <Footer></Footer>
         </div>
     );
