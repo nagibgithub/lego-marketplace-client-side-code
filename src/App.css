@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+
+* {
+  font-family: 'Patrick Hand', cursive;
+}
+
+.navActive {
+  @apply px-4 bg-sky-200 py-2 text-sky-800 font-bold border-4 rounded-xl border-sky-500 hover:bg-white
+}
+
+.navPending {
+  @apply px-4 bg-gray-200 py-2 font-bold border-4 rounded-xl border-sky-500 hover:bg-white
+}
+
+.navInactive {
+  @apply px-4 py-2 font-bold border-4 rounded-xl border-sky-500 hover:bg-white
+}
+
+.btn-n {
+  @apply border-4 px-4 py-2 border-sky-500 rounded-lg bg-sky-200 text-sky-800 font-bold hover:bg-white
+}
