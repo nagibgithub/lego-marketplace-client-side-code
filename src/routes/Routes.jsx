@@ -6,6 +6,8 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Blog from "../pages/Blog";
 import AboutUs from "../pages/AboutUs";
+import AllToys from "../pages/AllToys";
+import MyToys from "../pages/MyToys";
 
 const router = createBrowserRouter([
     {
@@ -16,7 +18,6 @@ const router = createBrowserRouter([
             {
                 path: "/",
                 element: <Home></Home>,
-                loader: () => fetch('https://b7a11-toy-marketplace-server-side-nagibgithub.vercel.app/users')
             },
             {
                 path: "/login",
@@ -32,7 +33,15 @@ const router = createBrowserRouter([
             },
             {
                 path: "/about",
-                element: <AboutUs/>
+                element: <AboutUs />
+            },
+            {
+                path: "/all_toys",
+                element: <AllToys />
+            },
+            {
+                path: "my_toys",
+                element: <MyToys/>
             }
         ],
 

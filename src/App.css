@@ -5,17 +5,21 @@
 }
 
 .navActive {
-  @apply px-4 bg-sky-200 py-2 text-sky-800 font-bold border-4 rounded-xl border-sky-500 hover:bg-white
+  @apply btn-design-n bg-sky-400 text-sky-800 font-bold rounded-xl border-sky-500
 }
 
 .navPending {
-  @apply px-4 bg-gray-200 py-2 font-bold border-4 rounded-xl border-sky-500 hover:bg-white
+  @apply btn-design-n bg-gray-200 font-bold rounded-xl border-sky-500
 }
 
 .navInactive {
-  @apply px-4 py-2 font-bold border-4 rounded-xl border-sky-500 hover:bg-white
+  @apply btn-design-n font-bold rounded-xl border-sky-500
 }
 
 .btn-n {
-  @apply border-4 px-4 py-2 border-sky-500 rounded-lg bg-sky-200 text-sky-800 font-bold hover:bg-white
+  @apply btn-design-n border-sky-500 rounded-lg bg-sky-200 text-sky-800 font-bold
+}
+
+.btn-design-n {
+  @apply px-4 py-2 border hover:border-sky-500 border-white hover:bg-white active:bg-blue-800 active:text-white
 }
