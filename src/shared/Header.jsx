@@ -7,11 +7,11 @@ import { useContext, useState } from "react";
 
 const Header = () => {
     const [isTrue, setTrue] = useState(false);
-    console.log(isTrue);
+    // console.log(isTrue);
 
     const handleSetTrue = () => {
         setTrue(!isTrue);
-        console.log(isTrue);
+        // console.log(isTrue);
     };
 
     const { user, logOut } = useContext(AuthContext)
@@ -54,7 +54,7 @@ const Header = () => {
                     {
                         user ?
                             <div className='flex items-center relative'>
-                                <Link to={'/add_toy'}><button className="btn-n">Add a Toy <FontAwesomeIcon /></button></Link>
+                                <Link to={'/add_toy'}><button className="btn-n">Add a Lego <FontAwesomeIcon /></button></Link>
                                 <div className="flex items-center">
                                     {
                                         user.photoURL ?
@@ -66,10 +66,11 @@ const Header = () => {
                                     }
                                 </div>
                                 <div className={`${isTrue ? "contents" : "hidden"}`}>
-                                    <ul className="absolute top-14 right-0 border bg-white border-sky-400 mt-3 p-2 shadow rounded-box min-w-max gap-1">
-                                        <li><Link to={'/my_toys'}><button className="btn-n">My Toys</button></Link></li>
+                                    <ul className="absolute z-30 top-14 right-0 border bg-white border-sky-400 mt-3 p-2 shadow rounded-box min-w-max gap-1">
+                                        <li className="font-n p-2 font-bold text-xl">{user.displayName}</li>
+                                        <li><Link to={'/my_toys'}><button onClick={() => setTrue(false)} className="btn-n w-full">My Toys</button></Link></li>
                                         <hr className="border my-1 border-sky-300" />
-                                        <li><button onClick={handleLogout} className="btn-n">Log Out</button></li>
+                                        <li><button onClick={handleLogout} className="btn-n w-full">Log Out</button></li>
                                     </ul>
                                 </div>
                             </div>

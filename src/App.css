@@ -36,6 +36,10 @@
   @apply bg-white bg-opacity-20 focus:bg-white focus:placeholder:text-black font-semibold focus:text-blue-700 text-white px-4 py-2 text-lg rounded-md border-2 border-white placeholder:text-white active:bg-white
 }
 
+.input-label {
+  @apply font-n text-xl font-bold text-sky-700
+}
+
 .google-signin-button {
   @apply mt-2 border-2 rounded-lg w-full text-center py-2 px-4 flex justify-center items-center hover:bg-white active:bg-opacity-50 btn-n
 }
