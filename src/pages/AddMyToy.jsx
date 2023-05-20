@@ -43,7 +43,7 @@ const AddMyToy = () => {
             .then(data => {
                 console.log(data);
                 if (data.insertedId) {
-                    alert('post successfully');
+                    alert('successfully added');
                     form.reset();
                     setTextLength(0);
                 }
@@ -123,7 +123,7 @@ const AddMyToy = () => {
                 </div>
                 <hr />
                 <h1 className="px-5 pt-5">Selling Information</h1>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5 p-5">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-5 p-5">
                     <label className="input-group h-18">
                         <span className="input-label min-w-max">7. Price: $</span>
                         <input name="price" type="number" placeholder="10" min={10} max={100} step={1} className="input input-bordered h-full w-full text-center text-lg font-bold" required />
@@ -139,12 +139,16 @@ const AddMyToy = () => {
                             <input type="radio" value={5} name="rating" className="mask mask-star-2 bg-sky-400" />
                         </div>
                     </label>
+                    <label className="input-group h-18">
+                        <span className="input-label min-w-max">9. Available Quantity</span>
+                        <input name="quantity" type="number" placeholder="1" min={1} max={100} step={1} className="input input-bordered h-full w-full text-center text-lg font-bold" required />
+                    </label>
                 </div>
                 <hr />
                 <h1 className="px-5 pt-5">Lego Description</h1>
                 <div className="grid grid-cols-1 gap-5 p-5">
                     <label className="input-group input-group-vertical">
-                        <span className="input-label">9. Lego Description: <span className={`${textLength === 1000 ? "text-red-600" : "text-sky-700"}`}>{textLength}/1000</span></span>
+                        <span className="input-label">10. Lego Description: <span className={`${textLength === 1000 ? "text-red-600" : "text-sky-700"}`}>{textLength}/1000</span></span>
                         <textarea onKeyUp={handleDescription} name="description" type="text" placeholder="Type a short description within 200 letters" maxLength={1000} className="input input-bordered h-24 whitespace-normal p-5" required />
                     </label>
                 </div>

@@ -21,9 +21,9 @@ const router = createBrowserRouter([
             { path: "/", element: <Home />, },
             { path: "/login", element: <Login /> },
             { path: "/register", element: <Register /> },
-            { path: "/blog", element: <PrivateRoute><Blog /></PrivateRoute> },
+            { path: "/blog", element: <Blog /> },
             { path: "/about", element: <AboutUs /> },
-            { path: "/all_toys", element: <AllToys /> },
+            { path: "/all_toys", element: <AllToys />, loader: () => fetch('https://b7a11-nagib-lego-server.vercel.app/all_legos') },
             { path: "my_toys", element: <MyToys /> },
             { path: "terms_conditions", element: <TermsConditions /> },
             { path: "add_toy", element: <PrivateRoute><AddMyToy /></PrivateRoute> }

@@ -1,6 +1,6 @@
 import Banner from "../components/homeComponents/Banner";
 import ImageSec from "../components/homeComponents/ImageSec";
-import MarqueeSec from "../components/homeComponents/MarqueeSec";
+import LegoTabs from "../components/homeComponents/tabs/LegoTabs";
 
 const Home = () => {
     return (
@@ -10,7 +10,7 @@ const Home = () => {
             <hr className="border border-sky-300 my-10" />
             <ImageSec></ImageSec>
             <hr className="border border-sky-300 my-10" />
-            <MarqueeSec></MarqueeSec>
+            <LegoTabs></LegoTabs>
             <hr className="border border-sky-300 my-10" />
         </div>
     );
