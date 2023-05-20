@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 const ToyCard = ({ toy }) => {
 
@@ -12,7 +13,7 @@ const ToyCard = ({ toy }) => {
         quantity,
         // photo,
         // rating,
-        // _id
+        _id
     } = toy
 
 
@@ -23,7 +24,7 @@ const ToyCard = ({ toy }) => {
             <td className="bg-orange-100">{category}: {subCategory}</td>
             <td className="bg-yellow-100 text-center">${price}</td>
             <td className="bg-green-100 text-center">{quantity} pic</td>
-            <td className="bg-purple-100 text-center"><button className="btn-n">View Details</button></td>
+            <td className="bg-purple-100 text-center"><Link to={`/legos/${_id}`}><button className="btn-n">View Details</button></Link></td>
         </tr>
     );
 };

@@ -30,7 +30,8 @@ const AddMyToy = () => {
         const price = form.price.value;
         const rating = form.rating.value;
         const description = form.description.value;
-        const lego = { name, photo, sellerName, sellerEmail, category, subCategory, price, rating, description }
+        const quantity = form.quantity.value;
+        const lego = { name, photo, sellerName, sellerEmail, category, subCategory, price, rating, quantity, description }
 
         fetch('https://b7a11-nagib-lego-server.vercel.app/legos', {
             method: 'POST',

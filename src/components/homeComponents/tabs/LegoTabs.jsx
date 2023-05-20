@@ -7,6 +7,11 @@ const LegoTabs = () => {
     const [subTab, setSubTab] = useState(1);
     // console.log(subTab);
 
+    const handleTab = id => {
+        setTabValue(id);
+        setSubTab(1);
+    }
+
     const [legoData, setLegoData] = useState([]);
 
     useEffect(() => {
@@ -17,7 +22,7 @@ const LegoTabs = () => {
 
     // console.log(legoData);
 
-    const legoCity = <>
+    const legoCity = <div className="grid grid-cols-3">
         <div onClick={() => setSubTab(1)} className={`${subTab == 1 ? "sun-tab-active bg-sky-400 border-blue-700" : "sun-tab-inactive border-white"}`}>
             <h1>Train Setup</h1>
         </div>
@@ -27,9 +32,9 @@ const LegoTabs = () => {
         <div onClick={() => setSubTab(3)} className={`${subTab == 3 ? "sun-tab-active bg-sky-400 border-blue-700" : "sun-tab-inactive border-white"}`}>
             <h1>Constraction Setup</h1>
         </div>
-    </>;
+    </div>;
 
-    const legoClassic = <>
+    const legoClassic = <div className="grid grid-cols-3">
         <div onClick={() => setSubTab(1)} className={`${subTab == 1 ? "sun-tab-active bg-red-400 border-red-700" : "sun-tab-inactive border-white"}`}>
             <h1>Bricks Box</h1>
         </div>
@@ -39,9 +44,9 @@ const LegoTabs = () => {
         <div onClick={() => setSubTab(3)} className={`${subTab == 3 ? "sun-tab-active bg-red-400 border-red-700" : "sun-tab-inactive border-white"}`}>
             <h1>Fantasy Universe</h1>
         </div>
-    </>;
+    </div>;
 
-    const legoMovie = <>
+    const legoMovie = <div className="grid grid-cols-3">
         <div onClick={() => setSubTab(1)} className={`${subTab == 1 ? "sun-tab-active bg-yellow-400 border-yellow-700" : "sun-tab-inactive border-white"}`}>
             <h1>Avater</h1>
         </div>
@@ -51,7 +56,7 @@ const LegoTabs = () => {
         <div onClick={() => setSubTab(3)} className={`${subTab == 3 ? "sun-tab-active bg-yellow-400 border-yellow-700" : "sun-tab-inactive border-white"}`}>
             <h1>Maevel</h1>
         </div>
-    </>;
+    </div>;
 
     const trainLego = legoData.filter(pd => (pd.subCategory == "Train Setup"));
     const constructionLego = legoData.filter(pd => (pd.subCategory == "Constraction Setup"));
@@ -66,18 +71,20 @@ const LegoTabs = () => {
 
     return (
         <>
-            <div className="grid grid-cols-3 justify-center">
-                <div onClick={() => setTabValue(1)} className={`${tabValue == 1 ? "tab-active border-sky-700 bg-sky-400 " : "tab-inactive"}`}>
+            <h1 className="text-n text-5xl">Popular Lego by Category</h1>
+            <div className="grid grid-cols-3 justify-center border-b-2 border-sky-700">
+                <div onClick={() => handleTab(1)} className={`${tabValue == 1 ? "tab-active border-sky-700 bg-sky-400 " : "tab-inactive"}`}>
                     <h1>Lego City</h1>
                 </div>
-                <div onClick={() => setTabValue(2)} className={`${tabValue == 2 ? "tab-active border-red-700 bg-red-400" : "tab-inactive"}`}>
+                <div onClick={() => handleTab(2)} className={`${tabValue == 2 ? "tab-active border-red-700 bg-red-400" : "tab-inactive"}`}>
                     <h1>Lego Classic</h1>
                 </div>
-                <div onClick={() => setTabValue(3)} className={`${tabValue == 3 ? "tab-active border-yellow-700 bg-yellow-400" : "tab-inactive"}`}>
+                <div onClick={() => handleTab(3)} className={`${tabValue == 3 ? "tab-active border-yellow-700 bg-yellow-400" : "tab-inactive"}`}>
                     <h1>Lego Movie</h1>
                 </div>
             </div>
-            <div className="grid grid-cols-3 justify-center border-t-2 border-green-700">
+            <h1 className="text-n text-3xl">Lego Sub Category</h1>
+            <div className="border-b-2 border-blue-800">
                 {
                     tabValue == 1 ?
                         legoCity
@@ -91,7 +98,7 @@ const LegoTabs = () => {
                                 <></>
                 }
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 md:grid-cols-3 mt-5 gap-3">
                 {
                     (tabValue == 1 && subTab == 1) ?
                         trainLego.map(lg => <TabLego key={lg._id} lego={lg}></TabLego>)

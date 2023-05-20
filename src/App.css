@@ -72,3 +72,27 @@
 .tab-1 {
   @apply text-center py-5 cursor-pointer font-n text-sm md:text-xl font-bold rounded-t-3xl border-t-2 border-l-2 border-r-2 
 }
+
+.text-n{
+  @apply font-n font-bold text-sky-700 text-center py-5
+}
+
+.search-n {
+  @apply border-8 h-20 pl-7 w-2/3 border-sky-500 rounded-full text-2xl font-semibold font-n shadow-lg
+}
+
+.lego-details h1 {
+  @apply font-n text-2xl py-2
+}
+
+.btn-update{
+  @apply btn-action border-green-700 text-green-700 hover:bg-green-200 active:bg-green-500 
+}
+
+.btn-delete{
+  @apply btn-action border-red-700 text-red-700 hover:bg-red-200 active:bg-red-500
+}
+
+.btn-action {
+  @apply font-n border-2 mx-5 text-xl font-bold rounded-2xl py-4 active:text-white
+}
