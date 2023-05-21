@@ -18,6 +18,20 @@ const GoogleLogIn = () => {
                 const credential = GoogleAuthProvider.credentialFromResult(result);
                 const token = credential.accessToken;
                 const user = result.user;
+                const logUserEmail = {email: user.email};
+
+                fetch('http://localhost:3000/jwt', {
+                    method: 'POST',
+                    headers: { 'content-type': 'application.json' },
+                    body: JSON.stringify(logUserEmail)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data)
+                        localStorage.setItem("lego-token", data.token)
+                    })
+
+
                 console.log(user, token);
                 // console.log(user);
                 // console.log(token);

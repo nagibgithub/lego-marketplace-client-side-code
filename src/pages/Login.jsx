@@ -9,7 +9,7 @@ import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 const Login = () => {
 
     const [errorMessage, setErrorMessage] = useState('')
-    const {signIn, auth} = useContext(AuthContext);
+    const { signIn, auth } = useContext(AuthContext);
     const [show, setShow] = useState(false);
     const emailRef = useRef();
     const navigate = useNavigate();
@@ -26,9 +26,22 @@ const Login = () => {
         signIn(email, password)
             .then(result => {
                 const loggedUser = result.user;
-                console.log(loggedUser);
+                const logUserEmail = { email: loggedUser.email };
+                console.log(logUserEmail);
+
+                fetch('http://localhost:3000/jwt', {
+                    method: 'POST',
+                    headers: { 'content-type': 'application.json' },
+                    body: JSON.stringify(logUserEmail)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data)
+                        localStorage.setItem("lego-token", data.token)
+                    })
+
                 setErrorMessage('')
-                navigate(from, {replace: true})
+                navigate(from, { replace: true })
 
             })
             .catch(error => {

@@ -12,6 +12,7 @@ import TermsConditions from "../pages/TermsConditions";
 import PrivateRoute from "./PrivateRoute";
 import AddMyToy from "../pages/AddMyToy";
 import ToyDetails from "../pages/ToyDetails";
+import UpdateLego from "../pages/UpdateLego";
 
 const router = createBrowserRouter(
     [
@@ -26,10 +27,12 @@ const router = createBrowserRouter(
                 { path: "/blog", element: <Blog /> },
                 { path: "/about", element: <AboutUs /> },
                 { path: "/all_toys", element: <AllToys />, loader: () => fetch('https://b7a11-nagib-lego-server.vercel.app/all_legos') },
-                { path: "/my_toys", element: <MyToys /> },
+                { path: "/my_toys/:email", element: <PrivateRoute><MyToys /></PrivateRoute> },
                 { path: "/terms_conditions", element: <TermsConditions /> },
                 { path: "/add_toy", element: <PrivateRoute><AddMyToy /></PrivateRoute> },
-                { path: "/legos/:id", element: <PrivateRoute><ToyDetails /></PrivateRoute>, loader: ({params}) => fetch(`https://b7a11-nagib-lego-server.vercel.app/legos/${params.id}`) }
+                { path: "/update/:id", element: <PrivateRoute><UpdateLego /></PrivateRoute>, loader: ({ params }) => fetch(`https://b7a11-nagib-lego-server.vercel.app/legos/${params.id}`) },
+                { path: "/legos/:id", element: <PrivateRoute><ToyDetails /></PrivateRoute>, loader: ({ params }) => fetch(`https://b7a11-nagib-lego-server.vercel.app/legos/${params.id}`) }
+
             ]
         }
     ]

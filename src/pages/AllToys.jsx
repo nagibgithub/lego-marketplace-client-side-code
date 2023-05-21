@@ -1,18 +1,25 @@
-import { useLoaderData } from "react-router-dom";
+// import { useLoaderData } from "react-router-dom";
 import ToyCard from "../components/ToyCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { useEffect, useRef, useState } from "react";
 
 const AllToys = () => {
+    const [services, setServices] = useState([]);
+    const [asc, setAsc] = useState(true);
+    // const allToy = useLoaderData();
+    const searchRef = useRef(null);
 
-    const allToy = useLoaderData();
-    // console.log(allToy);
+    const [search, setSearch] = useState('');
 
-    const handleSearch = event => {
-        event.preventDefault();
-        const form = event.target;
-        const search = form.search.value;
-        console.log(search);
+    useEffect(() => {
+        fetch(`http://localhost:3000/serarch_legos?search=${search}&sort=${asc ? 'asc' : 'desc'}`)
+            .then(res => res.json())
+            .then(data => setServices(data));
+    }, [asc, search])
+
+    const handleSearch = () => {
+        setSearch(searchRef.current.value);
     };
 
     return (
@@ -22,9 +29,13 @@ const AllToys = () => {
                 <div className="w-full flex justify-center my-5 ">
                     <form onSubmit={handleSearch} className="search-n flex items-center">
                         <FontAwesomeIcon className="text-sky-600" icon={faSearch} />
-                        <input className="focus:outline-none pl-5 mr-5 w-full" type="search" maxLength={30} placeholder="Search Your Lego by Name" name="search" id="search" />
+                        <input className="focus:outline-none pl-5 mr-5 w-full" ref={searchRef} type="search" maxLength={30} placeholder="Search Your Lego by Name" name="search" id="search" required/>
                         <input className="mr-5 text-sky-600 cursor-pointer pr-1 rounded-full" type="submit" value="Search" />
                     </form>
+                    <button
+                        className="btn-n"
+                        onClick={() => setAsc(!asc)}
+                    >{asc ? 'Price: High to Low' : 'Price: Low to High'}</button>
                 </div>
             </div>
             <div className="overflow-x-auto">
@@ -41,7 +52,7 @@ const AllToys = () => {
                     </thead>
                     <tbody>
                         {
-                            allToy.map(pd => <ToyCard key={pd._id} toy={pd}></ToyCard>)
+                            services.map(pd => <ToyCard key={pd._id} toy={pd}></ToyCard>)
                         }
                     </tbody>
                 </table>

@@ -1,28 +1,27 @@
-import { useLoaderData } from "react-router-dom";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 const ToyDetails = () => {
 
-    const lego = useLoaderData();
-    console.log(lego);
+    const [lego, setLegoData] = useState([]);
+    const { id } = useParams();
+    const url = `https://b7a11-nagib-lego-server.vercel.app/legos/${id}`;
+    useEffect(() => { fetch(url).then(res => res.json()).then(data => setLegoData(data)) }, [url]);
+    const { sellerName, name, category, subCategory, price, quantity, photo, rating, description, sellerEmail } = lego;
 
-    const {
-        sellerName,
-        name,
-        category,
-        subCategory,
-        price,
-        quantity,
-        photo,
-        rating,
-        description,
-        sellerEmail,
-        // _id
-    } = lego;
-
+    const locationBack = ()=>{
+        history.back();
+    };
 
     return (
         <div className="my-10">
-            <h1 className="text-n text-5xl">{name}</h1>
+            <div className="grid grid-cols-3 items-center">
+                <div><button onClick={locationBack} className="btn-n"><FontAwesomeIcon icon={faArrowLeft} /> Back to Previout</button></div>
+                <h1 className="text-n text-5xl">{name}</h1>
+                <div></div>
+            </div>
             <hr className="border-2 border-sky-700" />
             <div className="grid grid-cols-1 md:grid-cols-2 items-center">
                 <img className="w-full" src={photo} alt="" />
@@ -34,7 +33,6 @@ const ToyDetails = () => {
                     <h1 className="text-purple-500 font-bold">Product Category: {category}</h1>
                     <h1 className="text-red-500 font-bold">Product Sub Category: {subCategory}</h1>
                     <h1 className="text-orange-500 font-bold">Product Rationgs: {rating} Stars</h1>
- 
                     <div className="my-5">
                         {/* The button to open modal */}
                         <label htmlFor="my-modal-3" className="btn-n cursor-pointer">Product Description</label>

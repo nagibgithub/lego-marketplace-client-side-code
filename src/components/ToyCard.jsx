@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const ToyCard = ({ toy }) => {
 
-    console.log(toy);
+    // console.log(toy);
 
     const {
         sellerName,

@@ -1,7 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from "../assets/logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faCircleUser } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faUserAlt } from "@fortawesome/free-solid-svg-icons";
 import { AuthContext } from "../contexts/AuthProvider";
 import { useContext } from "react";
 
@@ -11,7 +11,10 @@ const Header = () => {
 
     const handleLogout = () => {
         logOut()
-    }
+            .then(() => {
+                localStorage.removeItem('lego-token')
+            })
+    };
 
     const navBarData = [
         { id: 1, title: "Home", path: "/" },
@@ -45,22 +48,22 @@ const Header = () => {
                     {
                         user ?
                             <div className='flex items-center'>
-                                <Link to={'/add_toy'}><button className="btn-n">Add a Lego <FontAwesomeIcon /></button></Link>
+                                <Link to={'/add_toy'}><button className="btn-n">Add a Lego</button></Link>
                                 <div className="dropdown dropdown-bottom dropdown-end dropdown-hover">
                                     <label tabIndex={1} className="m-1">
                                         {
                                             user.photoURL ?
                                                 <img className="cursor-pointer rounded-full m-2 border-sky-300 w-14 border-4" src={user.photoURL} alt="user photo" />
                                                 :
-                                                <FontAwesomeIcon className='w-12 h-12 text-gray-700 cursor-pointer' icon={faCircleUser} />
+                                                <FontAwesomeIcon className='w-12 h-12 text-gray-700 cursor-pointer' icon={faUserAlt} />
                                         }
                                     </label>
                                     <ul tabIndex={1} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 border-2 border-sky-400">
                                         <li className="font-n p-2 text-center font-bold text-xl">{user.displayName}</li>
                                         <hr className="border my-1 border-sky-300" />
-                                        <li><Link to={'/my_toys'}><button className="btn-n w-full">My Toys</button></Link></li>
+                                        <li><Link to={`/my_toys/${user.email}`}><button className="btn-n w-full">My Toys</button></Link></li>
                                         <hr className="border my-1 border-sky-300" />
-                                        <li><button onClick={handleLogout} className="btn-n w-full">Log Out</button></li>
+                                        <li><button onClick={handleLogout} className="btn-n w-full flex justify-center">Log Out</button></li>
                                     </ul>
                                 </div>
                             </div>
