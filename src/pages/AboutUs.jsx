@@ -9,7 +9,7 @@ const AboutUs = () => {
         <div className="bg-gray-100 min-h-screen">
       <header className="p-8 text-center">
         <h1 className="text-4xl font-bold">
-          Welcome to Our Brickland - Bangladesh's Premier LEGO Store!
+          Welcome to Our Brickland - Bangladeshs Premier LEGO Store!
         </h1>
       </header>
 
@@ -30,7 +30,7 @@ const AboutUs = () => {
             <li>Unparalleled Selection: Our Brickland boasts an extensive collection of LEGO sets, including the latest releases, exclusive sets, and hard-to-find items.</li>
             <li>Impeccable Quality: We only offer genuine LEGO products, ensuring that every purchase you make meets the highest standards of quality and authenticity.</li>
             <li>Knowledgeable Staff: Our friendly and knowledgeable staff members are passionate LEGO enthusiasts themselves.</li>
-            <li>Community Hub: Our Brickland is not just a store; it's a place where LEGO enthusiasts can come together, share their love for LEGO, and connect with like-minded individuals.</li>
+            <li>Community Hub: Our Brickland is not just a store; its a place where LEGO enthusiasts can come together, share their love for LEGO, and connect with like-minded individuals.</li>
             <li>Online Shopping Convenience: In addition to our physical store, we also provide a seamless online shopping experience through our user-friendly website.</li>
             <li>Exceptional Customer Service: We are committed to providing exceptional customer service at every step of your LEGO journey.</li>
           </ul>
@@ -39,7 +39,7 @@ const AboutUs = () => {
         <section>
           <h2 className="text-2xl font-bold my-4">Join Us at Our Brickland</h2>
           <p>
-            At Our Brickland, we believe that LEGO is more than just a toy—it's a gateway to endless creativity, innovation, and imagination. Whether you're a seasoned builder or just beginning your LEGO adventure, we're here to inspire and support you every step of the way.
+            At Our Brickland, we believe that LEGO is more than just a toy—its a gateway to endless creativity, innovation, and imagination. Whether youre a seasoned builder or just beginning your LEGO adventure, were here to inspire and support you every step of the way.
           </p>
           <p>
             Join us at Our Brickland, where every brick tells a story, and every visit is an opportunity to build something amazing. Let your imagination soar as you explore the wonderful world of LEGO with us!

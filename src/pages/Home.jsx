@@ -1,5 +1,6 @@
 import Banner from "../components/homeComponents/Banner";
 import ImageSec from "../components/homeComponents/ImageSec";
+import WeekPics from "../components/homeComponents/WeekPics";
 import LegoTabs from "../components/homeComponents/tabs/LegoTabs";
 import pageTitle from "../hooks/pageTitle";
 
@@ -16,6 +17,7 @@ const Home = () => {
             <hr className="border border-sky-300 my-10" />
             <LegoTabs></LegoTabs>
             <hr className="border border-sky-300 my-10" />
+            <WeekPics></WeekPics>
         </div>
     );
 };
