@@ -1,24 +1,37 @@
-// import { useLoaderData } from "react-router-dom";
 import ToyCard from "../components/ToyCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useRef, useState } from "react";
+import { useLoaderData } from "react-router-dom";
 
 const AllToys = () => {
-    const [services, setServices] = useState([]);
+    const allToy = useLoaderData();
+    const [legosData, setLegoData] = useState(allToy);
     const [asc, setAsc] = useState(true);
-    // const allToy = useLoaderData();
-    const searchRef = useRef(null);
-
     const [search, setSearch] = useState('');
+    const searchRef = useRef(null);
+    const [currentPage, setCurrentPage] = useState(0);
+    const totalProducts = allToy.length;
+    const totalPages = Math.ceil(totalProducts / 20);
+    const pageNumbers = [...Array(totalPages).keys()];
+    useEffect(() => {
+        fetch(`http://localhost:3000/services?search=${search}&sort=${asc ? 'asc' : 'desc'}`)
+            .then(res => res.json())
+            .then(data => setLegoData(data));
+    }, [asc, search]);
 
     useEffect(() => {
-        fetch(`https://nagib-toy.web.app/serarch_legos?search=${search}&sort=${asc ? 'asc' : 'desc'}`)
-            .then(res => res.json())
-            .then(data => setServices(data));
-    }, [asc, search])
+        async function fetchData() {
+            const response = await fetch(`http://localhost:3000/products?page=${currentPage}&limit=${20}`);
+            const data = await response.json();
+            setLegoData(data);
+        }
+        fetchData();
+    }, [currentPage]);
 
-    const handleSearch = () => {
+    const handleSearch = event => {
+        event.preventDefault();
+        // console.log(searchRef.current.value);
         setSearch(searchRef.current.value);
     };
 
@@ -29,14 +42,11 @@ const AllToys = () => {
                 <div className="w-full flex justify-center my-5 ">
                     <form onSubmit={handleSearch} className="search-n flex items-center">
                         <FontAwesomeIcon className="text-sky-600" icon={faSearch} />
-                        <input className="focus:outline-none pl-5 mr-5 w-full" ref={searchRef} type="search" maxLength={30} placeholder="Search Your Lego by Name" name="search" id="search" required/>
+                        <input className="focus:outline-none pl-5 mr-5 w-full" ref={searchRef} type="search" maxLength={30} placeholder="Search Your Lego by Name" name="search" id="search" />
                         <input className="mr-5 text-sky-600 cursor-pointer pr-1 rounded-full" type="submit" value="Search" />
                     </form>
-                    <button
-                        className="btn-n"
-                        onClick={() => setAsc(!asc)}
-                    >{asc ? 'Price: High to Low' : 'Price: Low to High'}</button>
                 </div>
+                <button className="btn-n w-full" onClick={() => setAsc(!asc)} >{asc ? 'Short by Price: High to Low' : 'Short by Price: Low to High'}</button>
             </div>
             <div className="overflow-x-auto">
                 <table className="table w-full">
@@ -52,10 +62,17 @@ const AllToys = () => {
                     </thead>
                     <tbody>
                         {
-                            services.map(pd => <ToyCard key={pd._id} toy={pd}></ToyCard>)
+                            legosData.map(pd => <ToyCard key={pd._id} toy={pd}></ToyCard>)
                         }
                     </tbody>
                 </table>
+            </div>
+            <div className="border text-center py-5">
+                <p className="text-lg font-bold">Page No: {currentPage + 1} / Items per page: 20</p>
+                {
+                    pageNumbers.map(number => <button key={number} className={currentPage === number ? 'selected' : 'unSelected'} onClick={() => setCurrentPage(number)} >{number + 1}</button>)
+                }
+
             </div>
         </div>
     );

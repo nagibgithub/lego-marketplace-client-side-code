@@ -54,7 +54,7 @@ const AddMyToy = () => {
     return (
         <div className="h-full my-10">
             <form onSubmit={handleSubmit} className="bg-sky-400 py-5 h-full">
-                <h1 className="px-5 pt-5">Lego Name and Photo</h1>
+                <h1 className="text-n text-xl font-semibold px-5 pt-5">Lego Name and Photo</h1>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5 p-5">
                     <label className="input-group input-group-vertical">
                         <span className="input-label">1. Lego Photo URL</span>
@@ -66,7 +66,7 @@ const AddMyToy = () => {
                     </label>
                 </div>
                 <hr />
-                <h1 className="px-5 pt-5">Seller Information</h1>
+                <h1 className="text-n text-xl font-semibold px-5 pt-5">Seller Information (this section can not be changed)</h1>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5 p-5">
                     <label className="input-group input-group-vertical">
                         <span className="input-label">3. Seller Name</span>
@@ -78,7 +78,7 @@ const AddMyToy = () => {
                     </label>
                 </div>
                 <hr />
-                <h1 className="px-5 pt-5">Lego Category</h1>
+                <h1 className="text-n text-xl font-semibold px-5 pt-5">Lego Category</h1>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5 p-5">
                     <label className="input-group input-group-vertical">
                         <span className="input-label">5. Lego Category</span>
@@ -123,7 +123,7 @@ const AddMyToy = () => {
                     </label>
                 </div>
                 <hr />
-                <h1 className="px-5 pt-5">Selling Information</h1>
+                <h1 className="text-n text-xl font-semibold px-5 pt-5">Selling Information</h1>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-5 p-5">
                     <label className="input-group h-18">
                         <span className="input-label min-w-max">7. Price: $</span>
@@ -146,7 +146,7 @@ const AddMyToy = () => {
                     </label>
                 </div>
                 <hr />
-                <h1 className="px-5 pt-5">Lego Description</h1>
+                <h1 className="text-n text-xl font-semibold px-5 pt-5">Lego Description</h1>
                 <div className="grid grid-cols-1 gap-5 p-5">
                     <label className="input-group input-group-vertical">
                         <span className="input-label">10. Lego Description: <span className={`${textLength === 1000 ? "text-red-600" : "text-sky-700"}`}>{textLength}/1000</span></span>
