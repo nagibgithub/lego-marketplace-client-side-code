@@ -1,8 +1,12 @@
 import Banner from "../components/homeComponents/Banner";
 import ImageSec from "../components/homeComponents/ImageSec";
 import LegoTabs from "../components/homeComponents/tabs/LegoTabs";
+import pageTitle from "../hooks/pageTitle";
 
 const Home = () => {
+
+    pageTitle('Lego Store | Home');
+
     return (
         <div className="container md:mx-auto">
             <hr className="border border-sky-300 my-10" />

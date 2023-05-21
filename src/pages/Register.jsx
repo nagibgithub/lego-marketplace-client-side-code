@@ -5,8 +5,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthProvider";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { updateProfile } from "firebase/auth";
+import pageTitle from "../hooks/pageTitle";
 
 const Register = () => {
+
+    pageTitle('Lego Store | Register');
 
     const { createUser } = useContext(AuthContext);
     const [errorMessage, setErrorMessage] = useState('');

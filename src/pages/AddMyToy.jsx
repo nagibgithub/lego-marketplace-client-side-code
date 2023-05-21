@@ -1,7 +1,10 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../contexts/AuthProvider";
+import pageTitle from "../hooks/pageTitle";
 
 const AddMyToy = () => {
+
+    pageTitle('Lego Store | Add Toy');
 
     const { user } = useContext(AuthContext);
 

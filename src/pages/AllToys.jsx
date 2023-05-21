@@ -3,8 +3,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useRef, useState } from "react";
 import { useLoaderData } from "react-router-dom";
+import pageTitle from "../hooks/pageTitle";
 
 const AllToys = () => {
+    pageTitle('Lego Store | All Legos');
     const allToy = useLoaderData();
     const [legosData, setLegoData] = useState(allToy);
     const [asc, setAsc] = useState(true);
@@ -15,14 +17,14 @@ const AllToys = () => {
     const totalPages = Math.ceil(totalProducts / 20);
     const pageNumbers = [...Array(totalPages).keys()];
     useEffect(() => {
-        fetch(`http://localhost:3000/services?search=${search}&sort=${asc ? 'asc' : 'desc'}`)
+        fetch(`https://b7a11-nagib-lego-server.vercel.app/searchLego?search=${search}&sort=${asc ? 'asc' : 'desc'}`)
             .then(res => res.json())
             .then(data => setLegoData(data));
     }, [asc, search]);
 
     useEffect(() => {
         async function fetchData() {
-            const response = await fetch(`http://localhost:3000/products?page=${currentPage}&limit=${20}`);
+            const response = await fetch(`https://b7a11-nagib-lego-server.vercel.app/products?page=${currentPage}&limit=${20}`);
             const data = await response.json();
             setLegoData(data);
         }

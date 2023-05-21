@@ -5,8 +5,11 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { sendPasswordResetEmail } from "firebase/auth";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import pageTitle from "../hooks/pageTitle";
 
 const Login = () => {
+
+    pageTitle('Lego Store | Log In');
 
     const [errorMessage, setErrorMessage] = useState('')
     const { signIn, auth } = useContext(AuthContext);
@@ -29,7 +32,7 @@ const Login = () => {
                 const logUserEmail = { email: loggedUser.email };
                 console.log(logUserEmail);
 
-                fetch('http://localhost:3000/jwt', {
+                fetch('https://b7a11-nagib-lego-server.vercel.app/jwt', {
                     method: 'POST',
                     headers: { 'content-type': 'application.json' },
                     body: JSON.stringify(logUserEmail)

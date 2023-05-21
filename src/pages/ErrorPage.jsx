@@ -1,6 +1,9 @@
 import { Link, useRouteError } from "react-router-dom";
+import pageTitle from "../hooks/pageTitle";
 
 const ErrorPage = () => {
+
+    pageTitle('Lego Store | Error');
 
     const error = useRouteError();
     console.error(error);

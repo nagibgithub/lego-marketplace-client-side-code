@@ -1,8 +1,12 @@
 import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import toast from 'react-hot-toast';
+import pageTitle from "../hooks/pageTitle";
 
 const UpdateLego = () => {
+
+    pageTitle('Lego Store | Update Lego');
+
     const [textLength, setTextLength] = useState(0);
     const lego = useLoaderData();
     const handleDescription = event => {

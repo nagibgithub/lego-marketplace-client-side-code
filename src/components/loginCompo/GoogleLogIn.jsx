@@ -20,7 +20,7 @@ const GoogleLogIn = () => {
                 const user = result.user;
                 const logUserEmail = {email: user.email};
 
-                fetch('http://localhost:3000/jwt', {
+                fetch('https://b7a11-nagib-lego-server.vercel.app/jwt', {
                     method: 'POST',
                     headers: { 'content-type': 'application.json' },
                     body: JSON.stringify(logUserEmail)

@@ -2,8 +2,11 @@ import { Link, useParams } from "react-router-dom";
 import MyLegoCard from "../components/MyLegoCard";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../contexts/AuthProvider";
+import pageTitle from "../hooks/pageTitle";
 
 const MyToys = () => {
+
+    pageTitle('Lego Store | My Toys');
 
     const emailId = useParams();
     const [legoData, setLegoData] = useState([]);

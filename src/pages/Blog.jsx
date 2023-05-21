@@ -1,5 +1,8 @@
+import pageTitle from "../hooks/pageTitle";
 
 const Blog = () => {
+
+    pageTitle('Lego Store | Blog');
 
     return (
         <div className='container m-auto border-2 p-2 rounded-lg' >

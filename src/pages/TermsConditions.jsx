@@ -1,8 +1,11 @@
 import {faArrowLeft} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {Link, useLocation} from 'react-router-dom';
+import pageTitle from '../hooks/pageTitle';
 
 const TermsConditions = () => {
+
+    pageTitle('Lego Store | Terms and Conditions');
 
     const locationHistory = useLocation()
     console.log(locationHistory);

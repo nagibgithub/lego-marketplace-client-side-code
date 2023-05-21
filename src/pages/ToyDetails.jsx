@@ -2,15 +2,19 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import pageTitle from "../hooks/pageTitle";
 
 const ToyDetails = () => {
 
+    
     const [lego, setLegoData] = useState([]);
     const { id } = useParams();
     const url = `https://b7a11-nagib-lego-server.vercel.app/legos/${id}`;
     useEffect(() => { fetch(url).then(res => res.json()).then(data => setLegoData(data)) }, [url]);
     const { sellerName, name, category, subCategory, price, quantity, photo, rating, description, sellerEmail } = lego;
-
+    
+    pageTitle(`Lego Store | ${name}`);
+    
     const locationBack = ()=>{
         history.back();
     };
