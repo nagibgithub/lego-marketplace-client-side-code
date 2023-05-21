@@ -25,6 +25,7 @@
     "react-router-dom": "^6.11.2",
     "react-select": "^5.7.3",
     "sort-by": "^0.0.2",
+    "sweetalert": "^2.1.2",
     "sweetalert-react": "^0.4.11"
   },
   "devDependencies": {

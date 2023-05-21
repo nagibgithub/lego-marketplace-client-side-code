@@ -32,7 +32,11 @@ const MyToys = () => {
                             <h1 className="text-n text-2xl">Total Lego You Added: {legoData.length}</h1>
                             <div>
                                 {
-                                    legoData.map(pd => <MyLegoCard key={pd._id} lego={pd}></MyLegoCard>)
+                                    legoData.map(pd => <MyLegoCard 
+                                        key={pd._id} 
+                                        lego={pd} 
+                                        allLego={legoData} 
+                                        setLego={setLegoData}></MyLegoCard>)
                                 }
                             </div>
                         </>

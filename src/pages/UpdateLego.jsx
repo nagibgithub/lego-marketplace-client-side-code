@@ -21,7 +21,7 @@ const UpdateLego = () => {
         const updateLego = { price, quantity, description };
         // console.log(updateLego);
 
-        fetch(`http://localhost:3000/legos/${lego._id}`, {
+        fetch(`https://b7a11-nagib-lego-server.vercel.app/legos/${lego._id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'

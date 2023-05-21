@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
+import swal from 'sweetalert';
 
-const MyLegoCard = ({ lego }) => {
+
+const MyLegoCard = ({ lego, allLego, setLego }) => {
 
     const {
         // sellerName, //**
@@ -17,7 +19,35 @@ const MyLegoCard = ({ lego }) => {
     } = lego;
 
     // console.log(_id, name);
-
+    const handleDelete = id => {
+        swal({
+            title: `"${name}" will be deleted?`,
+            text: `Are you ure, it will be deleted if you press Ok`,
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    fetch(`https://b7a11-nagib-lego-server.vercel.app/legos/${id}`, {
+                        method: 'DELETE'
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            console.log(data);
+                            if (data.deletedCount > 0) {
+                                swal("Your Lego product is deleted successfully", {
+                                    icon: "success",
+                                });
+                                const remainingLego = allLego.filter(pd => pd._id !== id);
+                                setLego(remainingLego);
+                            }
+                        })
+                } else {
+                    swal("Ok You are safe Lego file is not deleted");
+                }
+            });
+    };
 
     return (
         <div className="grid grid-cols-5 items-center border-2 border-sky-600 rounded-3xl my-5 p-5 gap-3 justify-between">
@@ -50,7 +80,7 @@ const MyLegoCard = ({ lego }) => {
             </div>
             <div className="flex flex-col gap-4">
                 <Link className="btn-update flex justify-center" to={`/update/${_id}`}><button>Update Lego</button></Link>
-                <button className="btn-delete">Delete Lego</button>
+                <button onClick={() => handleDelete(_id)} className="btn-delete">Delete Lego</button>
             </div>
         </div>
     );
