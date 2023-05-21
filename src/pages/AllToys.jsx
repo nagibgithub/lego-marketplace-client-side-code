@@ -13,7 +13,7 @@ const AllToys = () => {
     const [search, setSearch] = useState('');
 
     useEffect(() => {
-        fetch(`http://localhost:3000/serarch_legos?search=${search}&sort=${asc ? 'asc' : 'desc'}`)
+        fetch(`https://nagib-toy.web.app/serarch_legos?search=${search}&sort=${asc ? 'asc' : 'desc'}`)
             .then(res => res.json())
             .then(data => setServices(data));
     }, [asc, search])
